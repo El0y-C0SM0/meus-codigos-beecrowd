@@ -1,7 +1,6 @@
-// import java.io.IOException;
 import java.util.Scanner;
 
-class Bee1018 {
+class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int valor = scan.nextInt();
