@@ -1,27 +1,23 @@
-#include <iostream>
-#include <string>
+#include <cstdio>
+// usei o metodo de entrada scanf() para pegar o '\n'
 
 using namespace std;
 
 int main() {
-    string coluna;
-    while (cin >> coluna) {
-        int cont = coluna.length();
-        int soma;
+    int coluna = 0;
+    char letra;
 
-        if(cont == 1)
-           soma = coluna[0] - 64;
-        else if(cont == 2)
-            soma = (coluna[0] - 64) * 26 + (coluna[1] - 64);
-        else if(cont == 3)
-            soma = 26 * ((coluna[0] - 64) * 26 + (coluna[1] - 64)) + (coluna[2] - 64);
-        else
-            soma = 100000;
-
-        if(soma <= 16384)
-            cout << soma << endl;
-        else
-            cout << "Essa coluna nao existe Tobias!" << endl;
+    while(scanf("%c", &letra) != EOF) {
+        if(letra != '\n')
+            coluna = (coluna * 26) + letra - 64;
+        else if(coluna <= 16384 && coluna > 0) {
+            printf("%d\n", coluna);
+            coluna = 0;
+        } 
+        else {
+            printf("Essa coluna nao existe Tobias!\n");
+            coluna = 0;
+        }
     }
 
     return 0;
