@@ -7,36 +7,28 @@
 using namespace std;
 
 int main() {
-    long int a, b;
+    int a, b;
     cin >> a >> b;
 
+    int abs_maior = (abs(a) + (a % 2 == 0) - 1);
+    int abs_menor = (abs(b) + (b % 2 == 0) - 1);
+    int maior = a;
+
     // ordena com base no valor absoluto
-    if(abs(a) < abs(b)){ 
+    if(abs_maior < abs_menor){ 
         int aux;
-        aux = b;
-        b = a;
-        a = aux;
+        aux = abs_menor;
+        abs_menor = abs_maior;
+        abs_maior = aux;
+        maior = b;
     }
 
-    a = (abs(a) + (a % 2 == 0) - 1) * (a / abs(a));
-    b = (abs(b) + (b % 2 == 0) - 1) * (b / abs(b));
-
-//    a = (abs(a) + (a % 2 == 0) - 1) * sinal(a);
-//    b = (abs(b) + (b % 2 == 0) - 1) * sinal(b);
-
-    // isso é para debugar
-    cout << "\tvalor:" << a << endl;
-    cout << "\tvalor abs:" << abs(a) << endl;
-    cout << "\tvalor:" << b << endl;
-
-
     if(a > 0 && b > 0)
-        cout << static_cast<int>((quadrado(a) - quadrado(b)) * 0.25) << endl;
+        cout << ((quadrado(abs_maior) - quadrado(abs_menor)) >> 2) << endl;
     else if(a < 0 && b < 0)
-        cout << -(static_cast<int>(quadrado(a) - quadrado(b)) * 0.25) << endl;
+        cout << -((quadrado(abs_maior) - quadrado(abs_menor)) >> 2) << endl;
     else if(b < 0 || a < 0) 
-        cout << static_cast<int>((quadrado(a) - quadrado(b)) * 0.25) << endl;
-
+        cout << (((quadrado(abs_maior) - quadrado(abs_menor)) >> 2) * sinal(maior)) << endl;
     
     return 0;
 }
