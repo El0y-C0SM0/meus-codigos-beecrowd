@@ -20,7 +20,7 @@ int main() {
         aux = abs_menor;
         abs_menor = abs_maior;
         abs_maior = aux;
-        sinal = sinal(b);
+        sinal = sinal(b); 
     }
 
     if(a > 0 && b > 0)
