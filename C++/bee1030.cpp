@@ -6,6 +6,10 @@ using namespace std;
 
 typedef unsigned int uint;
 
+/// @brief Calcula a posição da ultima pessoa
+/// @param n é a quantidade de pessoas
+/// @param k é o numero de pessoas puladas
+/// @return ultima pessoa
 uint josephus(uint n, uint k) {
     uint x{0};
 
