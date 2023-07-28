@@ -1,4 +1,4 @@
 *.exe
 *.class
 .vscode/
-C++/main
+main
