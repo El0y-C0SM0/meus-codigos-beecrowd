@@ -1,19 +1,17 @@
-// erro de 5%
 #include <iostream>
  
 using namespace std;
  
 int main() {
-        
-    int temperatura_a, temperatura_b, temperatura_c;
-    int fator_crescimento_1, fator_crescimento_2;
+    int temp_a, temp_b, temp_c;
+    int ftc_1, ftc_2;
 
-    cin >> temperatura_a >> temperatura_b >> temperatura_c;
+    cin >> temp_a >> temp_b >> temp_c;
 
-    fator_crescimento_1 = temperatura_b - temperatura_a;
-    fator_crescimento_2 = temperatura_c - temperatura_b;
+    ftc_1 = temp_b - temp_a;
+    ftc_2 = temp_c - temp_b;
 
-    if(fator_crescimento_1 < fator_crescimento_2)
+    if(ftc_1 < ftc_2 || (ftc_1 == ftc_2 && ftc_1 > 0 && ftc_2 > 0))
         cout << ":)" << endl;
     else
         cout << ":(" << endl;
