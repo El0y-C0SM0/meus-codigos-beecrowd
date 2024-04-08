@@ -42,14 +42,7 @@ int main() {_
 
             for(auto &i : aer) cong = i > cong ? i : cong;
 
-            loop(0, a) if(aer[i] == cong) out.pb(i + 1);
-
-            if(out.size() == 1) cout << out[0];
-            else loop(0, out.size()) {
-                cout << i + 1;
-                if(i != out.size() - 1) cout << ' ';
-            }
-            
+            loop(0, a) if(aer[i] == cong) cout << i + 1 << ' ';
             cout << endl;
         };
 
