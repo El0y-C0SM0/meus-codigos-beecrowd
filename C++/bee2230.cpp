@@ -1,4 +1,3 @@
-// ! Runtime error
 #include <bits/stdc++.h>
 
 #define endl '\n'
@@ -47,20 +46,18 @@ void bfs() {
     
 }
 
-void zerarQueue() {
-    while (!q.empty()) q.pop();
-    
-}
-
 int main() {_
     int cont{1};
 
     while(1) {
         int c, e;
         cin >> c >> e >> l >> p;
+        if((!c && !e) && (!l && !p)) break;
         l--;
         
         cid = gph(c);
+        vis.clear();
+        q = queue<pair<int, int>>();
 
         loop(0, e) {
             int x, y;
@@ -79,8 +76,6 @@ int main() {_
         }
         cout << endl << endl;
         
-        vis.clear();
-        zerarQueue();
     }
 
     return 0;

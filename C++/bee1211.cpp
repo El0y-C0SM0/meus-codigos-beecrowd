@@ -2,6 +2,9 @@
 #include <algorithm>
 #include <vector>
 #include <string>
+
+#define endl '\n'
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(NULL);
  
 using namespace std;
 
@@ -17,7 +20,7 @@ int acha_diferenca(string a, string b) {
 int cont_caracteres(vector<string> telefones) {
     int cont = 0;
 
-    for(int i = 0, j = 1; i < telefones.size() - 1; i++, j++) {
+    for(int i = 0, j = 1; j < telefones.size(); i++, j++) {
         cont += acha_diferenca(telefones[i], telefones[j]);
     }
 
@@ -28,8 +31,9 @@ bool compara(string a, string b) {
     return a < b;
 }
 
-int main() {
+int main() {_
     int quant_nums;
+
     while (cin >> quant_nums) {
         vector<string> telefones;
 
