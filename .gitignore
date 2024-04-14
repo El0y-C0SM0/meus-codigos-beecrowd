@@ -2,4 +2,6 @@
 *.class
 .vscode/
 main
-template*
+*.out
+*.in
+*.txt
