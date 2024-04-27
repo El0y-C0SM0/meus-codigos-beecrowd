@@ -40,7 +40,6 @@ def main():
                     j = stk.pop()
                 
         print(pos)
-
         n -= 1
 
 if __name__ == '__main__':
