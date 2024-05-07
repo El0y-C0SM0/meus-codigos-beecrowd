@@ -18,19 +18,19 @@ typedef vector<int> vtr;
 const int INF = 0x3f3f3f3f;
 const ll LINF = 0x3f3f3f3f3f3f3f3f;
 
-ll findFirstPrimeFactorOf(ll n) {
-    if (not (n & 1))
+ll firstPrimeFactor(ll n) {
+    if (!(n & 1))
         return 2;
     
-    for (ll i {3}; i * i <= n; i += 2)
-        if (not (n % i))
+    for (ll i{3}; i * i <= n; i += 2)
+        if (!(n % i))
             return i;
 
     return n;
 }
 
 bool isPrime(ll n) {
-    return n > 1 and findFirstPrimeFactorOf(n) == n;
+    return n > 1 and firstPrimeFactor(n) == n;
 }
 
 int main() { _
