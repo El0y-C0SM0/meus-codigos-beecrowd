@@ -1,4 +1,3 @@
-// ! time limit
 #include <bits/stdc++.h>
 
 #define endl '\n'
@@ -20,24 +19,21 @@ const int INF = 0x3f3f3f3f;
 const ll LINF = 0x3f3f3f3f3f3f3f3f;
 
 int main() { _
-    vector<vtr> quad;
-    set<int> cont;
-    int n, flg{0};
+    unordered_set<int> s;
+    int n;
     cin >> n;
+    vector<vtr> quad(n, vtr(n));
 
     for(int i{0}; i < n; i++) {
-        vtr x;
-
         for(int j{0}; j < n; j++) {
             int y; cin >> y;
-            x.pb(y);
-            cont.insert(y);
-        }
+            quad[i][j] = y;
 
-        quad.pb(x);
+            s.insert(y);
+        }
     }
 
-    if(cont.size() != n * n) {
+    if(s.size() != n * n) {
         cout << 0 << endl;
         return 0;
     }
@@ -52,6 +48,7 @@ int main() { _
         z += quad[i][i];
 
         if(i == 0) x = y;
+
         if(x != y || x != w) {
             cout << 0 << endl;
             return 0;
