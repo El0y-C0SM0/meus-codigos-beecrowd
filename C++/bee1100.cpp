@@ -9,51 +9,48 @@
 using namespace std;
 
 typedef vector<int> vtr;
-typedef pair<int,int> coord;
+typedef pair<int,int> par;
 
-// todos as mudanças de posições possiveis para um cavalo
-vector<coord> moves = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
+int vis[9][9];
+vector<par> movs{{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
 
-// verifica se a posição é válida
-bool val(coord a, int vis[8][8]) {
-    return a.f >= 0 && a.s >= 0 && a.f < 8 && a.s < 8 && !vis[a.f][a.s];
+bool isValid(par p) {
+    return p.f > 0 && p.f <= 8 && p.s > 0 && p.s <= 8;
 }
 
-// faz uma bfs até chegar em fim e retorna a distancia
-int simula(coord ini, coord fim) {
-    int vis[8][8] = {0};
-    queue<pair<coord, int>> q;
-    q.push({ini, 0});
+int bfs(par &ini, par &fim) {
+    queue<par> q;
+    q.push(ini);
+    vis[ini.f][ini.s] = 1;
 
-    while (!q.empty()) {
-        auto pos = q.front(); q.pop();
+    while(!q.empty()) {
+        par p = q.front(); q.pop();
 
-        for(coord e : moves) {
-            e.f += pos.f.f;
-            e.s += pos.f.s;
+        if(p == fim) return vis[p.f][p.s];
 
-            if(val(e, vis) && e != fim) {
-                q.push({e, pos.s + 1});
-                vis[e.f][e.s] = 1;
-            }
-            else if(e == fim) return pos.s + 1;
+        for(auto i : movs) {
+            i = {p.f + i.f, p.s + i.s};
+            if(isValid(i)) {
+                q.push(i);
+                vis[i.f][i.s] = vis[p.f][p.s] + 1;
+            } 
         }
     }
 
-    return 0;
+    return -1;
 }
 
 int main() {_
-    string a, b;
+    string inicio, final;
 
-    while(cin >> a >> b){
-        coord ini, fim;
+    while (cin >> inicio >> final) {
+        memset(vis, 0, sizeof vis);
 
-        ini.f = a[0] - 97; ini.s = a[1] - 49;
-        fim.f = b[0] - 97; fim.s = b[1] - 49;
+        par ini{inicio[0] - 96, inicio[1] - 48};
+        par fim{final[0] - 96, final[1] - 48};
 
-        cout << "To get from " << a << " to " << b << " takes " << simula(ini, fim) << " knight moves." << endl;
+        cout << "To get from " << inicio << " to " << final << " takes " << bfs(ini, fim) - 1 << " knight moves." << endl;
     }
+    
 
-    return 0;
 }
