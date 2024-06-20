@@ -26,7 +26,6 @@ class Solution {
 private:
     vector<par> movs{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
     int ovelhas_pasto, lobos_pasto;
-    queue<par> q; 
 
     bool is_valid(par a){
         return a.f >= 0 && a.f < r && 
@@ -78,11 +77,11 @@ public:
 int main() {
     int r, c;
     scanf("%d %d", &r, &c);
+
     Solution sol(r, c);
 
-    loop(i, 0, r) {
+    loop(i, 0, r) 
         scanf(" %s", sol.farm[i]);
-    }
 
     sol.simula();
 
