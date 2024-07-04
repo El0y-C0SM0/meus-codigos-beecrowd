@@ -1,6 +1,7 @@
 *.exe
 *.class
 .vscode/
+.gaveta/
 main
 *.out
 *.in
