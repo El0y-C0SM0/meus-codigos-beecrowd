@@ -6,7 +6,7 @@ do
     file=$2
 
     if [ $file = "cpp" ]; then
-        cp ".template" "bee$number.$file"
+        cp "~/Modelos/cpp" "bee$number.$file"
     elif [ $file = "py" ]; then
         cp ".template" "bee$number.$file"
     fi
